@@ -182,7 +182,7 @@ bar {
 
 bindsym $mod+x exec i3lock
 bindsym $mod+c exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+m exec screenconfig
+bindsym $mod+m exec screenconfig.sh
 # volume control
 #bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '-5%'
 #bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '+5%'
@@ -192,8 +192,8 @@ bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 1%+
 # brightness control
 bindsym XF86MonBrightnessDown exec xbacklight -steps 1 -time 0 -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -steps 1 -time 0 -inc 7%
-bindsym XF86KbdBrightnessUp exec sudo /home/kavi/.i3/kbd_brightness_up
-bindsym XF86KbdBrightnessDown exec sudo /home/kavi/.i3/kbd_brightness_down
+bindsym XF86KbdBrightnessUp exec sudo ~/.i3/kbd_brightness_up
+bindsym XF86KbdBrightnessDown exec sudo ~/.i3/kbd_brightness_down
 
 #################### End Custom Commands ####################
 
