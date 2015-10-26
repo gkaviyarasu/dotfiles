@@ -1,0 +1,24 @@
+#!/bin/bash
+# 	Increase the keyboard brightness on a macbook pro
+# 	Writing to file requires sudo access; chown this script as root:
+# chown root:root kbd_brightness_up
+# chmod 744 kbd_brightness_up
+#	Create a symlink in a bin directory, e.g.
+# ln -s ~/.i3/kbd_brightness_up ~/bin/kbd_brightness_up
+# 	Then add the target to the sudoers file, e.g. for both:
+# steve ALL=(ALL) NOPASSWD: /home/steve/.i3/kbd_brightness_up, /home/steve/.i3/kbd_brightness_down
+# 	by Steve Eardley, 2014
+
+bright_file_path=/sys/class/leds/smc\:\:kbd_backlight/
+current_brightness=`cat ${bright_file_path}brightness`
+max_brightness=`cat ${bright_file_path}max_brightness`
+
+# Set the new brightness level
+set_brightness=$current_brightness
+
+if [ "$current_brightness" -lt "$max_brightness" ]
+then
+	set_brightness=$((current_brightness+15))
+fi
+
+echo $set_brightness | sudo tee ${bright_file_path}brightness

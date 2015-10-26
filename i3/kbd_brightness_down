@@ -1,0 +1,17 @@
+#!/bin/bash
+# Decrease the keyboard brightness on a macbook pro
+# See sibling file kbd_brightness_up for instructions
+# by Steve Eardley , 2014
+
+bright_file_path=/sys/class/leds/smc\:\:kbd_backlight/
+current_brightness=`cat ${bright_file_path}brightness`
+
+# Set the new brightness level
+set_brightness=$current_brightness
+
+if [ "$current_brightness" -gt 0 ]
+then
+	set_brightness=$((current_brightness-15))
+fi
+
+echo $set_brightness | sudo tee ${bright_file_path}brightness

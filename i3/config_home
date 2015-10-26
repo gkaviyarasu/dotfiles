@@ -1,0 +1,3 @@
+workspace $tag2 output HDMI1
+workspace $tag3 output HDMI1
+workspace $tag4 output HDMI1
